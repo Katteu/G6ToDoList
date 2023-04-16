@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="G6ToDoList.Pages.ListPage">
+    <!--Start of Nav Bar-->
+    <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid  BackgroundColor="#151E3D" Margin="0" Padding="0" Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <Button x:Name="addButt" BackgroundColor="#151E3D" Text="&#xe262; &#x0a; " FontFamily="RegularMaterial" FontSize="30" Grid.Column="0" Grid.Row="0" 
+                    TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="0,15,0,0" Clicked="addHeader_Clicked"/>
+            <Label Text="&#x0a;Add Task" Grid.Column="0" Grid.Row="0" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand"  Padding="0,10,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="addHeader_Clicked"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Button BackgroundColor="#151E3D" Text="&#xe896;" FontFamily="RegularMaterial" FontSize="30" Grid.Column="1" TextColor="White" 
+                    VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Padding="0,15,0,0" />
+            <Label Text="&#x0a;View List" Grid.Column="1" Grid.Row="0" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" Padding="0,10,0,0"/>
+            <Button BackgroundColor="#151E3D" Text="&#xe3c9;" FontFamily="RegularMaterial" FontSize="20" Grid.Column="2" TextColor="White" 
+                    VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Padding="0,15,0,0" Clicked="editHeader_Clicked"/>
+            <Label Text="&#x0a;Edit Task" Grid.Column="2" Grid.Row="0" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="0,10,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="editHeader_Clicked"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+        <!--End of Nav Bar-->
+        <!--Start of List-->
+        <ListView x:Name="taskListView" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill" >
+            <ListView.Header>
+                <Frame HorizontalOptions="Fill" >
+                    <Label Text="To-Do List 📝" TextColor="White" BackgroundColor="#1976d2" FontSize="30" FontAttributes="Bold" 
+                       Padding="0,5,0,5" HorizontalTextAlignment="Center"/>
+                </Frame>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="White" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="7.2*"/>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label ClassId="{Binding id}" Text="&#xe836;" FontFamily="RegularMaterial" FontSize="25" Padding="10,8,0,0" 
+                                   Grid.Column="0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="doneBtn_Clicked"/>
+                                </Label.GestureRecognizers>
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding isDone}" Value="true">
+                                        <Setter Property="TextColor" Value="Green" />
+                                        <Setter Property="Text" Value="&#xe86c;" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Label Text="{Binding title}" Grid.Column="1" TextColor="Black" FontSize="20" FontAttributes="Bold" Padding="8,6.5,0,0"/>
+                            <Label ClassId="{Binding id}" Text="&#xe3c9;" TextColor="#FF8B00" FontFamily="RegularMaterial" FontSize="25" Grid.Column="2" Padding="0,8,0,0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="editBtn_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label ClassId="{Binding id}" Text="&#xe872;" TextColor="#CF2129" FontFamily="RegularMaterial" FontSize="25" Grid.Column="3" Padding="0,8,0,0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="delBtn_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>

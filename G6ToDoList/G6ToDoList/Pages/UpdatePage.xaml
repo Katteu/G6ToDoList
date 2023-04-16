@@ -1,11 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="G6ToDoList.MainPage"
-             NavigationPage.HasNavigationBar="False"
-             xmlns:local="clr-namespace:G6ToDoList.CustomRenderers">
-
-            
+            NavigationPage.HasNavigationBar="False"
+             x:Class="G6ToDoList.Pages.UpdatePage">
+    <!--Start of Nav Bar-->
     <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -14,8 +12,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <!--Start of Nav Bar-->
-        <Grid  BackgroundColor="#151E3D" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0">
+        <Grid  BackgroundColor="#151E3D" Margin="0" Padding="0" Grid.Row="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -27,9 +24,13 @@
                 </Grid.ColumnDefinitions>
             </Grid>
             <Button x:Name="addButt" BackgroundColor="#151E3D" Text="&#xe262; &#x0a; " FontFamily="RegularMaterial" FontSize="30" Grid.Column="0" Grid.Row="0" 
-                    TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="0,15,0,0"/>
+                    TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="0,15,0,0" Clicked="addHeader_Clicked"/>
             <Label Text="&#x0a;Add Task" Grid.Column="0" Grid.Row="0" TextColor="White" HorizontalOptions="CenterAndExpand" 
-                   VerticalOptions="CenterAndExpand"  Padding="0,10,0,0"/>
+                   VerticalOptions="CenterAndExpand"  Padding="0,10,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="addHeader_Clicked"/>
+                </Label.GestureRecognizers>
+            </Label>
             <Button BackgroundColor="#151E3D" Text="&#xe896;" FontFamily="RegularMaterial" FontSize="30" Grid.Column="1" TextColor="White" 
                     VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Padding="0,15,0,0" Clicked="listHeader_Clicked"/>
             <Label Text="&#x0a;View List" Grid.Column="1" Grid.Row="0" TextColor="White" HorizontalOptions="CenterAndExpand" 
@@ -48,14 +49,14 @@
         </Grid>
         <!--End of Nav Bar-->
         <!--Start of Content-->
-        <Label Text="Input To-Do List ⌨️" FontSize="Large" FontAttributes="Bold" Grid.Row="1" Grid.Column="0"
+        <Label Text="Edit Task ✏️" FontSize="Large" FontAttributes="Bold" Grid.Row="1" Grid.Column="0"
                HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black"/>
-        
-        <Entry x:Name="TitleEntry" Placeholder="Input title of the to-do task.." HorizontalOptions="FillAndExpand" VerticalOptions="Start" 
+
+        <Entry x:Name="TitleEntry" HorizontalOptions="FillAndExpand" VerticalOptions="Start" 
                    Grid.Column="0" Grid.Row="2" Margin="5,0" Keyboard="Text" ReturnType="Done"/>
-        <Editor x:Name="DescEdit" Placeholder="Input description of the task.." HorizontalOptions="FillAndExpand" VerticalOptions="Start" 
+        <Editor x:Name="DescEdit" HorizontalOptions="FillAndExpand" VerticalOptions="Start" 
                    Grid.Column="0" Grid.Row="3" Margin="5,0" Keyboard="Text" MaxLength="280" AutoSize="TextChanges"/>
-        <Button Text="Add To-Do List" HorizontalOptions="Center" VerticalOptions="Start" Grid.Column="0" Grid.Row="4"
-                CornerRadius="5" BackgroundColor="Black" TextColor="White" Clicked="addButt_Clicked"/>
+        <Button Text="Update Task" HorizontalOptions="Center" VerticalOptions="Start" Grid.Column="0" Grid.Row="4"
+                CornerRadius="5" BackgroundColor="Black" TextColor="White" Clicked="updateButt_Clicked"/>
     </Grid>
 </ContentPage>

@@ -2,6 +2,9 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+[assembly: ExportFont("MaterialIconsRegular.ttf", Alias ="RegularMaterial")]
+[assembly: ExportFont("MaterialIconsTwoTone.ttf", Alias = "TwoToneMaterial")]
+
 namespace G6ToDoList
 {
     public partial class App : Application
@@ -10,7 +13,7 @@ namespace G6ToDoList
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
