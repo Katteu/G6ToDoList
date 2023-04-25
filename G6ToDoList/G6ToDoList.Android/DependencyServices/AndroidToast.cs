@@ -1,5 +1,5 @@
 ﻿using Android.Widget;
-using G6ToDoList.Dependency_Services;
+using G6ToDoList.Droid;
 using G6ToDoList;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using Xamarin.Forms.PlatformConfiguration;
 
 [assembly: Dependency(typeof(AndroidToast))]
 
-namespace G6ToDoList.Dependency_Services
+namespace G6ToDoList.Droid
 {
 
     public class AndroidToast : IToast

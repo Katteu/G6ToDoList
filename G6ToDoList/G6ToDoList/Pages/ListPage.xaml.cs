@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static Android.Icu.Text.CaseMap;
 
 namespace G6ToDoList.Pages  
 {
