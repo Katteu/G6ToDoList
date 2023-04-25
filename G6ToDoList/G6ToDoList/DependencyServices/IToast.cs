@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sample
+namespace G6ToDoList
 {
     public interface IToast
     {
